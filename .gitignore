@@ -1,0 +1,25 @@
+# Visual Studio / .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# Paket yöneticileri
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+
+# Log ve geçici dosyalar
+*.log
+*.tmp
+*.temp
+
+# OS dosyaları
+.DS_Store
+Thumbs.db
