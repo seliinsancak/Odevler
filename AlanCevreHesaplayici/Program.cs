@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace AlanCevreHesaplayici
 {
     class Program
@@ -59,7 +60,7 @@ namespace AlanCevreHesaplayici
             }
         }
 
-        // Input fonksiyonları
+        //Input Fonksiyonları
         static double ReadDouble()
         {
             while (true)
