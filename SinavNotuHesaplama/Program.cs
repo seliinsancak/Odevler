@@ -73,7 +73,34 @@
         }
         static double GetDoubleLimited(string msg,double min,double max)
         {
-            
+            double value;
+            while(true)
+            {
+                Console.Write(msg);
+                if (!double.TryParse(Console.ReadLine(),out value))
+                {
+                    Console.WriteLine("Lütfen sayı değeri giriniz!");
+                    continue;
+                }
+                if (value <min || value >max )
+                {
+                    Console.WriteLine($"Girilen değer {min} ile {max} arasında olmalıdır!");
+                    continue;
+                }
+                return value;
+            }
+
+        }
+        static string HesaplaHarfNotu(double not)
+        {
+            if (not >= 90) return "AA";
+            if (not >= 85) return "BA";
+            if (not >= 80) return "BB";
+            if (not >= 75) return "CB";
+            if (not >= 65) return "CC";
+            if (not >= 55) return "DC";
+            if (not >= 50) return "DD";
+            return "FF";
         }
     }
     
