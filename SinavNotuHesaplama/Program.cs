@@ -27,9 +27,53 @@
             for (int i =1; i<= adet; i++)
             {
                 double notDegeri= GetDoubleLimited($"{i}.notunuzun yüzdesini giriniz >>",0,100);
+
+                double yuzde;
+                while(true)
+                {
+                    yuzde = GetDoubleLimited($"{i}.notunuzun yüzdesini giriniz >>",0,100);
+
+                    if (totalPercentage + yuzde > 100)
+                    {
+                        Console.WriteLine($"Yuzdeler toplamı 100'ü geçemez! Kalan yüzde hakkınızı {100-totalPercentage}'dir.");
+                        continue;
+                    } 
+                    break;
+
+                }
+                totalPercentage += yuzde;
+                weightedSum += (notDegeri * yuzde / 100.0);
             }
 
+            if (totalPercentage != 100)
+            {
+                Console.WriteLine($"Yüzdeler toplamı 100 olmalıdır! Şu anda {totalPercentage}. İşlem iptal edildi. \n");
+                continue;
+            }
 
+            string harf = HesaplaHarfNotu(weightedSum);
+            string durum = (harf == "FF") ? "KALDI" :"GEÇTİ";
+
+            Console.WriteLine($"Sonuç: {dersAdi} ders not ortalamanız{weightedSum:F1} Harf notunuz {harf} Durumunuz {durum}\n");
+
+        }
+        static int GetInt(string msg,int min = int.MinValue,int max = int.MaxValue)
+        {
+            int value;
+            while(true)
+            {
+                Console.Write(msg);
+                if (!int.TryParsel(Console.ReadLine(),out value))
+                {
+                    Console.WriteLine("Lütfen sayı değerini giriniz: ");
+                    continue;
+                }
+                return value;
+            }
+        }
+        static double GetDoubleLimited(string msg,double min,double max)
+        {
+            
         }
     }
     
