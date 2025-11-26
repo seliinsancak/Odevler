@@ -58,24 +58,29 @@ class Program
         while (true)
         {
             Console.Write(msg);
+
             if (!int.TryParse(Console.ReadLine(), out choice))
             {
                 Console.WriteLine("Lütfen sayı giriniz!");
                 continue;
             }
+
             if (choice < 1 || choice > 16)
             {
                 Console.WriteLine("Lütfen 1-16 arası geçerli bir kart seçiniz!");
                 continue;
             }
+
             if (opened[choice - 1])
             {
                 if (choice - 1 == exclude)
                     Console.WriteLine("Bu kart zaten açık, başka bir kart seçiniz!");
                 else
                     Console.WriteLine("Açık olan bir kart seçtiniz!");
+
                 continue;
             }
+
             return choice;
         }
     }
@@ -83,13 +88,18 @@ class Program
     static void PrintBoard(char[] board, bool[] opened)
     {
         Console.WriteLine();
+
         for (int i = 0; i < 16; i++)
         {
-            if (opened[i]) Console.Write($"  {board[i]}  | ");
-            else Console.Write($" {(i + 1).ToString().PadLeft(2, ' ')} | ");
+            if (opened[i])
+                Console.Write($"  {board[i]}  | ");
+            else
+                Console.Write($" {(i + 1).ToString().PadLeft(2, ' ')} | ");
 
-            if ((i + 1) % 4 == 0) Console.WriteLine();
+            if ((i + 1) % 4 == 0)
+                Console.WriteLine();
         }
+
         Console.WriteLine(new string('-', 40));
     }
 
@@ -97,7 +107,7 @@ class Program
     {
         foreach (bool o in opened)
             if (!o) return false;
+
         return true;
     }
 }
- 
